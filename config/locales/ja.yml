@@ -8,3 +8,20 @@ ja:
       user:
         screen_name: ユーザー名
         name: 名前
+      tweet:
+        id: ID
+        text: ツイート内容
+        created_at: 日時
+  tweets:
+    index:
+      title: ツイート一覧
+      new: 新しいツイート
+    new:
+      tweet: ツイートする
+    show:
+      title: ツイート閲覧
+    tweets:
+      delete: 削除
+    created: ツイートを作成しました
+    destroyed: ツイートを削除しました
+    no_permission: 権限がありません

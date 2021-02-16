@@ -2,6 +2,7 @@ class Tweet < ApplicationRecord
   belongs_to :user
 
   validate :check_tweet_length
+  validates :text, presence: true
 
   private
 
