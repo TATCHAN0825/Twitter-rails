@@ -27,5 +27,9 @@
     <% end %>
 
     <%= yield %>
+
+    <% if Rails.env.development? %>
+      <p><small><%= link_to 'Mail(Dev)', letter_opener_web_path %></small></p>
+    <% end %>
   </body>
 </html>
