@@ -1,2 +1,5 @@
 ja:
   dummy: dummy
+  login: ログイン
+  logout: ログアウト
+  register: 登録
