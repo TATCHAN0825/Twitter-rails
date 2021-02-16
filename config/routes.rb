@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   devise_for :users
 
   resources 'tweets'
+  get ':screen_name' => 'users#show'
 
   root 'home#index'
 

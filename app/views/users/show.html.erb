@@ -1,0 +1,22 @@
+<h1><%= t('.title') %></h1>
+
+<% if current_user == @user %>
+  <%= link_to t('.edit_user'), edit_user_registration_path %>
+<% end %>
+
+<table>
+  <thead>
+    <tr>
+      <th><%= User.human_attribute_name(:name) %></th>
+      <th><%= User.human_attribute_name(:screen_name) %></th>
+      <th><%= t('.tweet_count') %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><%= @user.name %></td>
+      <td><%= @user.screen_name %></td>
+      <td><%= @user.tweets.size %></td>
+    </tr>
+  </tbody>
+</table>

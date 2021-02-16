@@ -25,3 +25,8 @@ ja:
     created: ツイートを作成しました
     destroyed: ツイートを削除しました
     no_permission: 権限がありません
+  users:
+    show:
+      title: ユーザ閲覧
+      edit_user: ユーザ編集
+      tweet_count: ツイート数
