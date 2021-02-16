@@ -5,4 +5,6 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :tweets, dependent: :destroy
+
+  validates :screen_name, length: {in: 4..15}, presence: true, uniqueness: true
 end
