@@ -8,6 +8,6 @@ module ApplicationHelper
   end
 
   def user_link(user)
-    link_to current_user.name + '(' + screen_name_with_at(current_user.screen_name) + ')', user_path(user)
+    link_to user.name + '(' + screen_name_with_at(user.screen_name) + ')', user_path(user)
   end
 end
