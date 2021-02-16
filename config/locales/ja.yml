@@ -7,3 +7,4 @@ ja:
     attributes:
       user:
         screen_name: ユーザー名
+        name: 名前

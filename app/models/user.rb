@@ -7,4 +7,5 @@ class User < ApplicationRecord
   has_many :tweets, dependent: :destroy
 
   validates :screen_name, length: {in: 4..15}, presence: true, uniqueness: true
+  validates :name, length: {maximum: 50}, presence: true
 end
