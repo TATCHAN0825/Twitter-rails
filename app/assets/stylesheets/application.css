@@ -14,10 +14,10 @@
  *= require_self
  */
 
-#notice {
+.notice {
     color: #55FFFF;
 }
 
-#alert {
+.alert {
     color: #FF5555;
 }
