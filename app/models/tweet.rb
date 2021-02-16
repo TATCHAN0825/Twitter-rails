@@ -11,7 +11,7 @@ class Tweet < ApplicationRecord
       count += 1 + (char.bytesize > 1 ? 1 : 0)
     end
     if count > 280
-      errors.add(:text, :length_too_long)
+      errors.add(:text, :too_long, count: 280)
     end
   end
 end
