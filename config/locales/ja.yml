@@ -34,6 +34,8 @@ ja:
       follower_count: フォロワー数
       follow: フォロー
       unfollow: フォロー解除
+    no-following: フォローがいません
+    no-follower: フォロワーがいません
   follows:
     created: フォローしました
     failed_create: フォローに失敗しました

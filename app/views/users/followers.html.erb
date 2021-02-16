@@ -1,0 +1,7 @@
+<h1>フォロワー</h1>
+
+<ul>
+  <% @user.followers.each do |follower| %>
+    <li><%= follower.name %>(<%= follower.screen_name %>)</li>
+  <% end %>
+</ul>

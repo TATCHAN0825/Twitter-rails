@@ -7,7 +7,11 @@ Rails.application.routes.draw do
   devise_for :users
 
   resources 'tweets'
-  get ':screen_name' => 'users#show'
+  scope ":screen_name" do
+    get '' => 'users#show'
+    get 'following' => 'users#following'
+    get 'followers' => 'users#followers'
+  end
   resources 'follows', only: %i[create destroy]
 
   root 'home#index'

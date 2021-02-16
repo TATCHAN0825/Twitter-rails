@@ -27,8 +27,20 @@
       <td><%= @user.name %></td>
       <td><%= @user.screen_name %></td>
       <td><%= @user.tweets.size %></td>
-      <td><%= @user.followings.size %></td>
-      <td><%= @user.followers.size %></td>
+      <td>
+        <% if (followings_size = @user.followings.size) > 0 %>
+          <%= link_to followings_size, following_path(@user.screen_name) %>
+        <% else %>
+          <%= followings_size %>
+        <% end %>
+      </td>
+      <td>
+        <% if (followers_size = @user.followers.size) > 0 %>
+          <%= link_to followers_size, followers_path(@user.screen_name) %>
+        <% else %>
+          <%= followers_size %>
+        <% end %>
+      </td>
     </tr>
   </tbody>
 </table>

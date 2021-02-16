@@ -1,0 +1,7 @@
+<h1>フォロー</h1>
+
+<ul>
+  <% @user.followings.each do |following| %>
+    <li><%= following.name %>(<%= following.screen_name %>)</li>
+  <% end %>
+</ul>
