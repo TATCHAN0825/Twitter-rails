@@ -8,6 +8,7 @@ Rails.application.routes.draw do
 
   resources 'tweets'
   get ':screen_name' => 'users#show'
+  resources 'follows', only: %i[create destroy]
 
   root 'home#index'
 end

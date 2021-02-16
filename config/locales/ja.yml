@@ -30,3 +30,12 @@ ja:
       title: ユーザ閲覧
       edit_user: ユーザ編集
       tweet_count: ツイート数
+      follow_count: フォロー数
+      follower_count: フォロワー数
+      follow: フォロー
+      unfollow: フォロー解除
+  follows:
+    created: フォローしました
+    failed_create: フォローに失敗しました
+    destroyed: フォロー解除しました
+    failed_destroy: フォロー解除に失敗しました
