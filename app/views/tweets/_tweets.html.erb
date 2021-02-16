@@ -14,7 +14,7 @@
         <td><%= link_to tweet.id, tweet_url(tweet) %></td>
         <td><%= tweet.created_at %></td>
         <td><%= tweet.text %></td>
-        <td><%= tweet.user.name %>(<%= screen_name_with_at(tweet.user.screen_name) %>)</td>
+        <td><%= user_link(tweet.user) %></td>
         <% if current_user == tweet.user %>
           <td><%= link_to t('.delete'), tweet_url(tweet), method: :delete %></td>
         <% end %>

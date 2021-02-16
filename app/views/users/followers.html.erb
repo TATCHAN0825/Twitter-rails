@@ -2,6 +2,6 @@
 
 <ul>
   <% @user.followers.each do |follower| %>
-    <li><%= follower.name %>(<%= follower.screen_name %>)</li>
+    <li><%= user_link(follower) %></li>
   <% end %>
 </ul>
