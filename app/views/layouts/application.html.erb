@@ -30,7 +30,7 @@
     <%= yield %>
 
     <% if Rails.env.development? %>
-      <p><small><%= link_to 'Mail(Dev)', letter_opener_web_path %></small></p>
+      <p><small><%= link_to 'Mail(Dev)', letter_opener_web_path, target: :_blank %></small></p>
     <% end %>
   </body>
 </html>
