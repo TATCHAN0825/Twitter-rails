@@ -1,36 +1,19 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
-    <%= favicon_link_tag 'favicon.ico', :rel => 'shortcut icon' %>
-    <title>Twitter</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <title><%= content_for?(:title) ? yield(:title) : "Untitled" %></title>
+
+    <%= stylesheet_link_tag    "application" %>
+    <%= javascript_include_tag "application", 'data-turbolinks-track' => true %>
+    <%= csrf_meta_tags %>
   </head>
 
   <body>
-    <% if notice %>
-      <p class="notice"><%= notice %></p>
-    <% end %>
-    <% if alert %>
-      <p class="alert"><%= alert %></p>
-    <% end %>
-
-    <% if current_user %>
-      <%= user_link(current_user) %> |
-      <%= link_to t('logout'), destroy_user_session_path, method: :delete %>
-    <% else %>
-      <%= link_to t('register'), new_user_registration_path %> |
-      <%= link_to t('login'), new_user_session_path %>
-    <% end %>
 
     <%= yield %>
 
-    <% if Rails.env.development? %>
-      <p><small><%= link_to 'Mail(Dev)', letter_opener_web_path, target: :_blank %></small></p>
-    <% end %>
   </body>
 </html>
