@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+
   include ApplicationHelper
 
   before_action :set_user
