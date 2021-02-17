@@ -38,8 +38,8 @@ ja:
       title: フォローリスト
     followers:
       title: フォロワーリスト
-    no-following: フォローがいません
-    no-follower: フォロワーがいません
+    no_following: フォローがいません
+    no_follower: フォロワーがいません
   follows:
     created: フォローしました
     failed_create: フォローに失敗しました
