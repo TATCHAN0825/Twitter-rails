@@ -4,6 +4,7 @@
     <%= favicon_link_tag 'favicon.ico', :rel => 'shortcut icon' %>
     <title>Twitter</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= stylesheet_pack_tag 'stylesheets' %>
   </head>
   <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   <%= stylesheet_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
@@ -17,7 +18,7 @@
 
     <% if current_user %>
       <%= user_link(current_user) %> |
-      <%= link_to t('logout'), destroy_user_session_path, method: :delete %>
+      <%= link_to t('logout'), destroy_user_session_path, method: :delete,class:"button alert"%>
     <% else %>
       <%= link_to t('register'), new_user_registration_path %> |
       <%= link_to t('login'), new_user_session_path %>
