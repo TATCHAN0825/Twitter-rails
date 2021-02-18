@@ -12,25 +12,79 @@
   </head>
 
   <body>
+    <!-- 上部ナビゲーションバー -->
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+      <a class="navbar-brand" href="<%= root_path %>">
+        <%= image_tag 'favicon.ico', size: '30x30' %>
+        Twitter
+      </a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#nav-main">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <!-- ナビゲーションバーの中身 -->
+      <div class="collapse navbar-collapse" id="nav-main">
+        <ul class="navbar-nav mr-auto">
+          <!-- ナビゲーションバーのアイテムを書いていく -->
+          <li class="nav-item <%= 'active' if controller.controller_name == 'home' or request.path == home_path %>">
+            <%= link_to t('application.home'), root_path, class: 'nav-link' %>
+          </li>
+          <!-- 開発モードの場合のみメーラーのリンク表示 -->
+          <% if Rails.env.development? %>
+            <li class="nav-item">
+              <%= link_to 'Mail(Dev)', letter_opener_web_path, target: :_blank, class: 'nav-link' %>
+            </li>
+          <% end %>
+        </ul>
+        <ul class="navbar-nav">
+          <!-- ナビゲーションバーの右側 -->
+          <% if current_user %>
+            <li class="nav-item <%= 'active' if controller.controller_name == 'users' %>">
+              <%= link_to user_path(current_user), class: 'nav-link' do %>
+                <%= image_tag user_image_path(current_user), size: '25x25', class: %w[rounded-circle] %>
+                <%= current_user.name %>
+              <% end %>
+            </li>
+            <li class="nav-item">
+              <%= link_to destroy_user_session_path, method: :delete, class: 'nav-link', title: t('application.logout') do %>
+                <i class="fas fa-sign-out-alt"></i>
+              <% end %>
+            </li>
+          <% else %>
+            <li class="nav-item <%= 'active' if controller.controller_name == 'registrations' %>">
+              <%= link_to t('application.register'), new_user_registration_path, class: 'nav-link' %>
+            </li>
+            <li class="nav-item <%= 'active' if controller.controller_name == 'sessions' %>">
+              <%= link_to t('application.login'), new_user_session_path, class: 'nav-link' %>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+    </nav>
+
+    <!-- flash表示 -->
     <% if notice %>
-      <p class="notice"><%= notice %></p>
+      <div class="container p-3">
+        <div class="alert alert-info" role="alert"><%= notice %></div>
+      </div>
     <% end %>
     <% if alert %>
-      <p class="alert"><%= alert %></p>
+      <div class="container <%= 'p-3' unless notice %>">
+        <div class="alert alert-danger" role="alert"><%= alert %></div>
+      </div>
     <% end %>
 
-    <% if current_user %>
-      <%= user_link(current_user) %> |
-      <%= link_to t('application.logout'), destroy_user_session_path, method: :delete %>
-    <% else %>
-      <%= link_to t('application.register'), new_user_registration_path %> |
-      <%= link_to t('application.login'), new_user_session_path %>
-    <% end %>
+    <!-- 各viewの内容を表示する -->
+    <div class="container">
+      <%= yield %>
+    </div>
 
-    <%= yield %>
-
-    <% if Rails.env.development? %>
-      <p><small><%= link_to 'Mail(Dev)', letter_opener_web_path, target: :_blank %></small></p>
+    <!-- ツイート作成ボタン -->
+    <% if current_user and request.path != new_tweet_path %>
+      <%= link_to new_tweet_path, title: t("application.new_tweet") do %>
+        <div id="new-tweet-button">
+          <i id="new-tweet-button-content" class="fab fa-twitter"></i>
+        </div>
+      <% end %>
     <% end %>
   </body>
 </html>
