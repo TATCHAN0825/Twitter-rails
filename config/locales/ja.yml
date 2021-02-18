@@ -28,7 +28,6 @@ ja:
     no_permission: 権限がありません
   users:
     show:
-      title: ユーザ閲覧
       edit_user: ユーザ編集
       follow: フォロー
       unfollow: フォロー解除
