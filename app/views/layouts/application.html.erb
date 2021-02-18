@@ -48,9 +48,9 @@
                   <% end %>
                 </li>
                 <li class="nav-item">
-                  <%= link_to new_tweet_path, class: 'nav-link' do %>
+                  <a href="<%= new_tweet_path %>" class="nav-link <%= 'active' if request.path == new_tweet_path %>">
                     <i class="fab fa-twitter fa-fw"></i><span class="d-none d-lg-inline"><%= t('application.new_tweet') %></span>
-                  <% end %>
+                  </a>
                 </li>
               <% else %>
                 <li class="nav-item">
