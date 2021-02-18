@@ -5,6 +5,7 @@ class UsersController < ApplicationController
   before_action :set_user
 
   def show
+    @tweets = @user.tweets.order(created_at: 'DESC')
   end
 
   def following

@@ -30,15 +30,16 @@ ja:
     show:
       title: ユーザ閲覧
       edit_user: ユーザ編集
-      tweet_count: ツイート数
-      follow_count: フォロー数
-      follower_count: フォロワー数
       follow: フォロー
       unfollow: フォロー解除
     following:
       title: フォローリスト
     followers:
       title: フォロワーリスト
+    profile:
+      tweet_count: ツイート数
+      follow_count: フォロー数
+      follower_count: フォロワー数
     no_following: フォローがいません
     no_follower: フォロワーがいません
   follows:
@@ -46,3 +47,6 @@ ja:
     failed_create: フォローに失敗しました
     destroyed: フォロー解除しました
     failed_destroy: フォロー解除に失敗しました
+  timeline:
+    home:
+      title: ホームタイムライン

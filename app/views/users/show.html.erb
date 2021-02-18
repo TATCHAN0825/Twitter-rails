@@ -1,5 +1,3 @@
-<h1><%= t('.title') %></h1>
-
 <% if current_user %>
   <% if current_user == @user %>
     <%= link_to t('.edit_user'), edit_user_registration_path %>
@@ -12,41 +10,6 @@
   <% end %>
 <% end %>
 
-<table>
-  <thead>
-    <tr>
-      <th><%= User.human_attribute_name(:name) %></th>
-      <th><%= User.human_attribute_name(:screen_name) %></th>
-      <th><%= User.human_attribute_name(:image) %></th>
-      <th><%= t('.tweet_count') %></th>
-      <th><%= t('.follow_count') %></th>
-      <th><%= t('.follower_count') %></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><%= @user.name %></td>
-      <td><%= @user.screen_name %></td>
-      <% if @user.image? %>
-        <td><%= image_tag @user.image.url,size: '100x100' %></td>
-      <% else %>
-        <td><%= image_tag "Initialicon.png",size: '100x100' %></td>
-        <% end %>
-      <td><%= @user.tweets.size %></td>
-      <td>
-        <% if (followings_size = @user.followings.size) > 0 %>
-          <%= link_to followings_size, following_path(@user.screen_name) %>
-        <% else %>
-          <%= followings_size %>
-        <% end %>
-      </td>
-      <td>
-        <% if (followers_size = @user.followers.size) > 0 %>
-          <%= link_to followers_size, followers_path(@user.screen_name) %>
-        <% else %>
-          <%= followers_size %>
-        <% end %>
-      </td>
-    </tr>
-  </tbody>
-</table>
+<%= render 'profile', user: @user %>
+
+<%= render 'tweets/tweets', tweets: @tweets %>
