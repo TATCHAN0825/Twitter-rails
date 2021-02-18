@@ -43,12 +43,12 @@
                   </a>
                 </li>
                 <li class="nav-item">
-                  <%= link_to destroy_user_session_path, method: :delete, class: 'nav-link', title: t('application.logout') do %>
+                  <%= link_to destroy_user_session_path, method: :delete, class: 'nav-link' do %>
                     <i class="fas fa-sign-out-alt"></i><%= t('application.logout') %>
                   <% end %>
                 </li>
                 <li class="nav-link">
-                  <%= link_to new_tweet_path, class: 'nav-link', title: t('application.new_tweet') do %>
+                  <%= link_to new_tweet_path, class: 'nav-link' do %>
                     <i class="fab fa-twitter"></i><%= t('application.new_tweet') %>
                   <% end %>
                 </li>
