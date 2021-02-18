@@ -10,15 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_17_041332) do
+ActiveRecord::Schema.define(version: 2021_02_18_224222) do
 
   create_table "follows", force: :cascade do |t|
     t.integer "user_id", null: false
     t.integer "target_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index "\"user_id,\", \"target_id\"", name: "index_follows_on_user_id,_and_target_id", unique: true
     t.index ["target_id"], name: "index_follows_on_target_id"
+    t.index ["user_id", "target_id"], name: "index_follows_on_user_id_and_target_id", unique: true
     t.index ["user_id"], name: "index_follows_on_user_id"
   end
 
