@@ -1,8 +1,5 @@
 ja:
   dummy: dummy
-  login: ログイン
-  logout: ログアウト
-  register: 登録
   activerecord:
     attributes:
       user:
@@ -13,6 +10,10 @@ ja:
         id: ID
         text: ツイート内容
         created_at: 日時
+  application:
+    login: ログイン
+    logout: ログアウト
+    register: 登録
   tweets:
     index:
       title: ツイート一覧
