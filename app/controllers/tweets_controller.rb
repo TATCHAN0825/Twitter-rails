@@ -17,7 +17,7 @@ class TweetsController < ApplicationController
   def create
     @tweet = current_user.tweets.new(tweet_params)
     if @tweet.save
-      redirect_to :tweets, notice: t('.created')
+      redirect_to :home, notice: t('.created')
     else
       render :new
     end
@@ -25,7 +25,7 @@ class TweetsController < ApplicationController
 
   def destroy
     @tweet.destroy
-    redirect_to :tweets, notice: t('.destroyed')
+    redirect_to :home, notice: t('.destroyed')
   end
 
   private
@@ -36,7 +36,7 @@ class TweetsController < ApplicationController
 
   def check_permission
     unless current_user == @tweet.user
-      redirect_to :tweets, alert: t('.no_permission')
+      redirect_to :home, alert: t('.no_permission')
     end
   end
 
