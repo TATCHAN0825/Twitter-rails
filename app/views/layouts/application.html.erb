@@ -32,7 +32,7 @@
             <ul class="nav flex-column nav-pills" style=font-size:50px;>
               <li class="nav-item">
                 <a class="nav-link <%= 'active' if controller.controller_name == 'home' or request.path == home_path %>" href="<%= root_path %>">
-                  <i class="fas fa-house-user"></i><%= t('application.home') %>
+                  <i class="fas fa-house-user fa-fw"></i><%= t('application.home') %>
                 </a>
               </li>
               <% if current_user %>
@@ -44,12 +44,12 @@
                 </li>
                 <li class="nav-item">
                   <%= link_to destroy_user_session_path, method: :delete, class: 'nav-link' do %>
-                    <i class="fas fa-sign-out-alt"></i><%= t('application.logout') %>
+                    <i class="fas fa-sign-out-alt fa-fw"></i><%= t('application.logout') %>
                   <% end %>
                 </li>
                 <li class="nav-item">
                   <%= link_to new_tweet_path, class: 'nav-link' do %>
-                    <i class="fab fa-twitter"></i><%= t('application.new_tweet') %>
+                    <i class="fab fa-twitter fa-fw"></i><%= t('application.new_tweet') %>
                   <% end %>
                 </li>
               <% else %>
