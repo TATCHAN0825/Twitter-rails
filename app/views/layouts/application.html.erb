@@ -1,77 +1,75 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <%= favicon_link_tag 'favicon.ico', :rel => 'shortcut icon' %>
-  <title>Twitter</title>
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <%= csrf_meta_tags %>
-  <%= csp_meta_tag %>
+  <head>
+    <%= favicon_link_tag 'favicon.ico', :rel => 'shortcut icon' %>
+    <title>Twitter</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
 
-  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-  <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-</head>
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
 
-<body>
-<!-- flash表示 -->
-<% if notice %>
-  <div class="container p-3">
-    <div class="alert alert-info" role="alert"><%= notice %></div>
-  </div>
-<% end %>
-<% if alert %>
-  <div class="container <%= 'p-3' unless notice %>">
-    <div class="alert alert-danger" role="alert"><%= alert %></div>
-  </div>
-<% end %>
+  <body>
+    <!-- flash表示 -->
+    <% if notice %>
+      <div class="container p-3">
+        <div class="alert alert-info" role="alert"><%= notice %></div>
+      </div>
+    <% end %>
+    <% if alert %>
+      <div class="container <%= 'p-3' unless notice %>">
+        <div class="alert alert-danger" role="alert"><%= alert %></div>
+      </div>
+    <% end %>
 
-<!-- サイドバー -->
-<div class="container-fluid">
-  <div class="row">
-    <div class="col-3">
-      <nav>
-        <ul class="nav flex-column nav-pills"style=font-size:50px;>
-          <li class="nav-item">
-            <a class="nav-link <%= 'active' if controller.controller_name == 'home' or request.path == home_path %>" href="/home"><i class="fas fa-house-user"></i><%=t('application.home') %></a>
-          </li>
-          <% if current_user %>
-            <li class="nav-item">
-              <a href="<%= user_path(current_user) %>" class="nav-link <%= 'active' if controller.controller_name == 'users' %>">
-                <%= image_tag user_image_path(current_user), size: '25x25', class: %w[rounded-circle] %>
-                <%= current_user.name %>
-              </a>
-            </li>
-            <li class="nav-item">
-              <%= link_to destroy_user_session_path, method: :delete, class: 'nav-link', title: t('application.logout') do %>
-                <i class="fas fa-sign-out-alt"></i><%= t('application.logout')%>
+    <!-- サイドバー -->
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-3">
+          <nav>
+            <ul class="nav flex-column nav-pills" style=font-size:50px;>
+              <li class="nav-item">
+                <a class="nav-link <%= 'active' if controller.controller_name == 'home' or request.path == home_path %>" href="/home"><i class="fas fa-house-user"></i><%= t('application.home') %></a>
+              </li>
+              <% if current_user %>
+                <li class="nav-item">
+                  <a href="<%= user_path(current_user) %>" class="nav-link <%= 'active' if controller.controller_name == 'users' %>">
+                    <%= image_tag user_image_path(current_user), size: '25x25', class: %w[rounded-circle] %>
+                    <%= current_user.name %>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <%= link_to destroy_user_session_path, method: :delete, class: 'nav-link', title: t('application.logout') do %>
+                    <i class="fas fa-sign-out-alt"></i><%= t('application.logout') %>
+                  <% end %>
+                </li>
+                <li class="nav-link">
+                  <%= link_to new_tweet_path, class: 'nav-link', title: t('application.new_tweet') do %>
+                    <i class="fab fa-twitter"></i><%= t('application.new_tweet') %>
+                  <% end %>
+                </li>
+              <% else %>
+                <li class="nav-item <%= 'active' if controller.controller_name == 'registrations' %>">
+                  <%= link_to t('application.register'), new_user_registration_path, class: 'nav-link' %>
+                </li>
+                <li class="nav-item <%= 'active' if controller.controller_name == 'sessions' %>">
+                  <%= link_to t('application.login'), new_user_session_path, class: 'nav-link' %>
+                </li>
               <% end %>
-            </li>
-            <li class="nav-link">
-              <%= link_to new_tweet_path, class: 'nav-link', title: t('application.new_tweet') do %>
-                <i class="fab fa-twitter"></i><%= t('application.new_tweet')%>
-                <%end %>
-            </li>
-          <% else %>
-            <li class="nav-item <%= 'active' if controller.controller_name == 'registrations' %>">
-              <%= link_to t('application.register'), new_user_registration_path, class: 'nav-link' %>
-            </li>
-            <li class="nav-item <%= 'active' if controller.controller_name == 'sessions' %>">
-              <%= link_to t('application.login'), new_user_session_path, class: 'nav-link' %>
-            </li>
-          <% end %>
-          <% if Rails.env.development? %>
-            <li class="nav-item">
-              <%= link_to 'Mail(Dev)', letter_opener_web_path, target: :_blank, class: 'nav-link' %>
-            </li>
-          <% end %>
-
-        </ul>
-      </nav>
-
+              <% if Rails.env.development? %>
+                <li class="nav-item">
+                  <%= link_to 'Mail(Dev)', letter_opener_web_path, target: :_blank, class: 'nav-link' %>
+                </li>
+              <% end %>
+            </ul>
+          </nav>
+        </div>
+        <div class="col-9">
+          <%= yield %>
+        </div>
+      </div>
     </div>
-    <div class="col-9">
-      <%= yield %>
-    </div>
-  </div>
-</div>
-</body>
+  </body>
 </html>
