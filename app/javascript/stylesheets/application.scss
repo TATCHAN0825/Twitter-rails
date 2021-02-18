@@ -3,23 +3,3 @@
 body {
   padding-top: 85px; //コンテンツがナビゲーションバーに隠れるのを防止
 }
-
-//右下のツイートボタン
-#new-tweet-button {
-  width: 70px;
-  height: 70px;
-  position: fixed;
-  right: 3rem;
-  bottom: 3rem;
-  background: #ECD6E3;
-  border-radius: 50%;
-}
-
-//右下のツイートボタン内容
-#new-tweet-button-content {
-  position: fixed;
-  right: 4.2rem;
-  bottom: 4.2rem;
-  color: white;
-  font-size: 30px;
-}

@@ -77,14 +77,5 @@
     <div class="container">
       <%= yield %>
     </div>
-
-    <!-- ツイート作成ボタン -->
-    <% if current_user and request.path != new_tweet_path %>
-      <%= link_to new_tweet_path, title: t("application.new_tweet") do %>
-        <div id="new-tweet-button">
-          <i id="new-tweet-button-content" class="fab fa-twitter"></i>
-        </div>
-      <% end %>
-    <% end %>
   </body>
 </html>
