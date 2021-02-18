@@ -73,9 +73,24 @@
       </div>
     <% end %>
 
-    <!-- 各viewの内容を表示する -->
-    <div class="container">
-      <%= yield %>
+    <!-- サイドバー -->
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-3 pl-5">
+          <ul>
+            <li>one</li>
+            <li>two</li>
+            <li>three</li>
+          </ul>
+        </div>
+        <div class="col-6">
+          <!-- 各viewの内容を表示する -->
+          <%= yield %>
+        </div>
+        <div class="col-3">
+          <!-- 右 -->
+        </div>
+      </div>
     </div>
   </body>
 </html>
