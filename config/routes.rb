@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   devise_for :users
 
   resources 'tweets'
-  scope ":screen_name" do
+  scope ':screen_name' do
     get '' => 'users#show'
     get 'following' => 'users#following'
     get 'followers' => 'users#followers'
