@@ -31,7 +31,7 @@
           <nav>
             <ul class="nav flex-column nav-pills" style=font-size:50px;>
               <li class="nav-item">
-                <a class="nav-link <%= 'active' if controller.controller_name == 'home' or request.path == home_path %>" href="/home">
+                <a class="nav-link <%= 'active' if controller.controller_name == 'home' or request.path == home_path %>" href="<%= root_path %>">
                   <i class="fas fa-house-user"></i><%= t('application.home') %>
                 </a>
               </li>
