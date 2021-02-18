@@ -13,11 +13,7 @@
     <tr>
       <td><%= user.name %></td>
       <td><%= user.screen_name %></td>
-      <% if user.image? %>
-        <td><%= image_tag user.image.url, size: '100x100' %></td>
-      <% else %>
-        <td><%= image_tag "Initialicon.png", size: '100x100' %></td>
-      <% end %>
+      <td><%= image_tag user_image_path(user), size: '100x100' %></td>
       <td><%= user.tweets.size %></td>
       <td>
         <% if (followings_size = user.followings.size) > 0 %>
