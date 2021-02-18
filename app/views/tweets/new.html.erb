@@ -1,18 +1,8 @@
-<%= form_with(model: @tweet, local: true) do |form| %>
-  <% if @tweet.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= t('errors.template.header', count: @tweet.errors.count, model: @tweet.model_name.human) %>:</h2>
-      <ul>
-        <% @tweet.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
+<%= bootstrap_form_with(model: @tweet, local: true) do |form| %>
+  <%= render 'shared/error_messages', model: @tweet %>
 
   <div class="field">
-    <%= form.label :text %><br>
-    <%= form.text_area :text, size: '50x15' %>
+    <%= form.text_area :text %>
   </div>
 
   <div class="actions">
