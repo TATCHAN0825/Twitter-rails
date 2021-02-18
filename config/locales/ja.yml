@@ -43,6 +43,7 @@ ja:
       tweet_count: ツイート数
       follow_count: フォロー数
       follower_count: フォロワー数
+      no_profile: 自己紹介は設定されていません
     no_following: フォローがいません
     no_follower: フォロワーがいません
   follows:

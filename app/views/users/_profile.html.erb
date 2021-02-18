@@ -15,7 +15,7 @@
       <td><%= user.name %></td>
       <td><%= user.screen_name %></td>
       <td><%= image_tag user_image_path(user), size: '100x100' %></td>
-      <td><%== user.profile %></td>
+      <td><%== user.profile || t('.no_profile') %></td>
       <td><%= user.tweets.size %></td>
       <td>
         <% if (followings_size = user.followings.size) > 0 %>
