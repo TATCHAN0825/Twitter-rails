@@ -12,70 +12,133 @@
   </head>
 
   <body>
-    <!-- flash表示 -->
-    <% if notice %>
-      <div class="container p-3">
-        <div class="alert alert-info" role="alert"><%= notice %></div>
-      </div>
-    <% end %>
-    <% if alert %>
-      <div class="container <%= 'p-3' unless notice %>">
-        <div class="alert alert-danger" role="alert"><%= alert %></div>
-      </div>
-    <% end %>
-
-    <!-- サイドバー -->
     <div class="container-fluid">
       <div class="row">
-        <div class="col-3">
-          <nav>
-            <ul class="nav flex-column nav-pills">
+        <!-- サイドバー用カラム -->
+        <div class="col-3-auto order-1 pl-3 d-none d-md-block">
+          <div class="d-none d-xl-block" style="padding-right: 240px"></div>
+          <div class="d-xl-none" style="padding-right: 80px"></div>
+          <!-- サイドバー上部 -->
+          <nav style="position: fixed">
+            <ul class="nav flex-column nav-pills" style="font-size: 25px;">
               <li class="nav-item">
                 <a class="nav-link <%= 'active' if controller.controller_name == 'home' or request.path == home_path %>" href="<%= root_path %>">
-                  <i class="fas fa-house-user fa-fw"></i><span class="d-none d-lg-inline"><%= t('application.home') %></span>
+                  <i class="fas fa-house-user fa-fw"></i><span class="d-none d-xl-inline"><%= t('application.home') %></span>
                 </a>
               </li>
               <% if current_user %>
                 <li class="nav-item">
-                  <a href="<%= user_path(current_user) %>" class="nav-link <%= 'active' if controller.controller_name == 'users' %>">
-                    <%= image_tag user_image_path(current_user), size: '25x25', class: %w[rounded-circle] %>
-                    <span class="d-none d-lg-inline"><%= current_user.name %></span>
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <%= link_to destroy_user_session_path, method: :delete, class: 'nav-link' do %>
-                    <i class="fas fa-sign-out-alt fa-fw"></i><span class="d-none d-lg-inline"><%= t('application.logout') %></span>
-                  <% end %>
-                </li>
-                <li class="nav-item">
                   <a href="<%= new_tweet_path %>" class="nav-link <%= 'active' if request.path == new_tweet_path %>">
-                    <i class="fab fa-twitter fa-fw"></i><span class="d-none d-lg-inline"><%= t('application.new_tweet') %></span>
+                    <i class="fab fa-twitter fa-fw"></i><span class="d-none d-xl-inline"><%= t('application.new_tweet') %></span>
                   </a>
                 </li>
               <% else %>
                 <li class="nav-item">
                   <a href="<%= new_user_registration_path %>" class="nav-link <%= 'active' if controller.controller_name == 'registrations' %>">
-                    <i class="fas fa-user-plus fa-fw"></i><span class="d-none d-lg-inline"><%= t('application.register') %></span>
+                    <i class="fas fa-user-plus fa-fw"></i><span class="d-none d-xl-inline"><%= t('application.register') %></span>
                   </a>
                 </li>
                 <li class="nav-item">
                   <a href="<%= new_user_session_path %>" class="nav-link <%= 'active' if controller.controller_name == 'sessions' %>">
-                    <i class="fas fa-sign-in-alt fa-fw"></i><span class="d-none d-lg-inline"><%= t('application.login') %></span>
+                    <i class="fas fa-sign-in-alt fa-fw"></i><span class="d-none d-xl-inline"><%= t('application.login') %></span>
                   </a>
                 </li>
               <% end %>
               <% if Rails.env.development? %>
                 <li class="nav-item">
-                  <%= link_to letter_opener_web_path, target: :_blank, class: 'nav-link' do %>
-                    <i class="fas fa-envelope-open-text fa-fw"></i><span class="d-none d-lg-inline">Mail(Dev)</span>
+                  <%= link_to letter_opener_web_path, class: 'nav-link text-muted' do %>
+                    <i class="fas fa-envelope-open-text"></i><span class="d-none d-xl-inline">Mail(Dev)</span>
                   <% end %>
                 </li>
               <% end %>
             </ul>
           </nav>
+          <!-- サイドバー下部 -->
+          <nav>
+            <ul class="nav fixed-bottom pb-4 pl-2">
+              <% if current_user %>
+                <li class="nav-item">
+                  <div class="dropdown">
+                    <a class="nav-link" data-toggle="dropdown" style="font-size: 20px;">
+                      <%= image_tag user_image_path(current_user), size: '45x45', class: %w[rounded-circle] %>
+                      <div class="d-none d-xl-inline" style="position: relative; bottom: 5px">
+                        <%= current_user.name.truncate(12) %>
+                        <i class="fas fa-ellipsis-h" style="position: relative; left: 50px; bottom: -10px;"></i>
+                        <span class="text-muted" style="font-size: 15px;position: relative; left: -98px; bottom: -15px;">
+                          <%= screen_name_with_at(current_user.screen_name) %>
+                        </span>
+                      </div>
+                    </a>
+                    <div class="dropdown-menu">
+                      <%= link_to destroy_user_session_path, method: :delete, class: 'dropdown-item' do %>
+                        <i class="fas fa-sign-out-alt fa-fw"></i><%= t('application.logout') %>
+                      <% end %>
+                    </div>
+                  </div>
+                </li>
+              <% end %>
+            </ul>
+          </nav>
         </div>
-        <div class="col-9">
-          <%= yield %>
+        <!-- モバイル用下部バー -->
+        <div class="d-md-none">
+          <ul class="nav fixed-bottom w-100 nav-justified bg-light border-top" style="font-size: 35px">
+            <li class="nav-item">
+              <%= link_to root_path, class: 'nav-link' do %>
+                <i class="fas fa-house-user fa-fw" title="<%= t('application.home') %>"></i>
+              <% end %>
+            </li>
+            <% if current_user %>
+              <li class="nav-item">
+                <%= link_to new_tweet_path, class: 'nav-link' do %>
+                  <i class="fab fa-twitter fa-fw" title="<%= t('application.new_tweet') %>"></i>
+                <% end %>
+              </li>
+            <% end %>
+            <li class="nav-item">
+              <div class="dropdown">
+                <a class="nav-link" data-toggle="dropdown" style="font-size: 20px;">
+                  <%= image_tag user_image_path(current_user), size: '45x45', class: %w[rounded-circle] %>
+                </a>
+                <div class="dropdown-menu">
+                  <%= link_to destroy_user_session_path, method: :delete, class: 'dropdown-item' do %>
+                    <i class="fas fa-sign-out-alt fa-fw"></i><%= t('application.logout') %>
+                  <% end %>
+                </div>
+              </div>
+            </li>
+            <% if Rails.env.development? %>
+              <li class="nav-item">
+                <%= link_to letter_opener_web_path, class: 'nav-link text-muted', title: 'Mail(Dev)' do %>
+                  <i class="fas fa-envelope-open-text"></i>
+                <% end %>
+              </li>
+            <% end %>
+          </ul>
+        </div>
+        <!-- メインコンテンツ用カラム -->
+        <div class="col order-2 border-right border-left" style="min-height: 97vh">
+          <div class="container">
+            <!-- flash表示 -->
+            <% if notice %>
+              <div class="container p-3">
+                <div class="alert alert-info" role="alert"><%= notice %></div>
+              </div>
+            <% end %>
+            <% if alert %>
+              <div class="container <%= 'p-3' unless notice %>">
+                <div class="alert alert-danger" role="alert"><%= alert %></div>
+              </div>
+            <% end %>
+            <%= yield %>
+          </div>
+        </div>
+        <!-- 右カラム -->
+        <div class="col-4 order-4 d-none d-lg-block">
+          <div style="width: 150px"></div>
+          <div style="position: fixed" class="pr-3">
+            <%= yield :right_content %>
+          </div>
         </div>
       </div>
     </div>
