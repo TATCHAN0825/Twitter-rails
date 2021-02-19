@@ -1,0 +1,9 @@
+<div class="card">
+  <div class="card-body">
+    <%= link_to user_path(user) do %>
+      <%= image_tag user_image_path(user), size: '45x45', class: %w[rounded-circle] %>
+      <%= user.name %>
+      <span class="text-muted"><%= screen_name_with_at(user.screen_name) %></span>
+    <% end %>
+  </div>
+</div>

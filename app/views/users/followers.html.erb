@@ -1,7 +1,7 @@
-<h1><%= t('.title') %></h1>
+<p><%= t('.title') %> - <%= user_link(@user) %></p>
 
-<ul>
-  <% @user.followers.each do |follower| %>
-    <li><%= user_link(follower) %></li>
-  <% end %>
-</ul>
+<% @user.followers.each do |follower| %>
+  <div class="py-2">
+    <%= render 'user', user: follower %>
+  </div>
+<% end %>
