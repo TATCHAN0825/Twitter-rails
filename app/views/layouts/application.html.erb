@@ -46,7 +46,7 @@
               <% end %>
               <% if Rails.env.development? %>
                 <li class="nav-item">
-                  <%= link_to letter_opener_web_path, class: 'nav-link text-muted' do %>
+                  <%= link_to letter_opener_web_path, class: 'nav-link text-muted', target: :_blank do %>
                     <i class="fas fa-envelope-open-text"></i><span class="d-none d-xl-inline">Mail(Dev)</span>
                   <% end %>
                 </li>
@@ -109,7 +109,7 @@
             </li>
             <% if Rails.env.development? %>
               <li class="nav-item">
-                <%= link_to letter_opener_web_path, class: 'nav-link text-muted', title: 'Mail(Dev)' do %>
+                <%= link_to letter_opener_web_path, class: 'nav-link text-muted', title: 'Mail(Dev)', target: :_blank do %>
                   <i class="fas fa-envelope-open-text"></i>
                 <% end %>
               </li>
