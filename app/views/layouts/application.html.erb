@@ -94,19 +94,19 @@
                   <i class="fab fa-twitter fa-fw" title="<%= t('application.new_tweet') %>"></i>
                 <% end %>
               </li>
-            <% end %>
-            <li class="nav-item">
-              <div class="dropdown">
-                <a class="nav-link" data-toggle="dropdown" style="font-size: 20px;">
-                  <%= image_tag user_image_path(current_user), size: '45x45', class: %w[rounded-circle] %>
-                </a>
-                <div class="dropdown-menu">
-                  <%= link_to destroy_user_session_path, method: :delete, class: 'dropdown-item' do %>
-                    <i class="fas fa-sign-out-alt fa-fw"></i><%= t('application.logout') %>
-                  <% end %>
+              <li class="nav-item">
+                <div class="dropdown">
+                  <a class="nav-link" data-toggle="dropdown" style="font-size: 20px;">
+                    <%= image_tag user_image_path(current_user), size: '45x45', class: %w[rounded-circle] %>
+                  </a>
+                  <div class="dropdown-menu">
+                    <%= link_to destroy_user_session_path, method: :delete, class: 'dropdown-item' do %>
+                      <i class="fas fa-sign-out-alt fa-fw"></i><%= t('application.logout') %>
+                    <% end %>
+                  </div>
                 </div>
-              </div>
-            </li>
+              </li>
+            <% end %>
             <% if Rails.env.development? %>
               <li class="nav-item">
                 <%= link_to letter_opener_web_path, class: 'nav-link text-muted', title: 'Mail(Dev)', target: :_blank do %>
