@@ -45,6 +45,9 @@ ja:
       follow_count: フォロー数
       follower_count: フォロワー数
       no_profile: 自己紹介は設定されていません
+    user:
+      follow: フォロー
+      unfollow: フォロー解除
     no_following: フォローがいません
     no_follower: フォロワーがいません
   follows:
