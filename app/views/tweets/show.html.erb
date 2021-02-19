@@ -1,3 +1,14 @@
 <p><%= t('.title') %> - ID: <%= @tweet.id %></p>
 
 <%= render 'tweets', tweets: [@tweet] %>
+
+<% content_for(:right_content) do %>
+  <div class="card">
+    <div class="card-header">
+      <h5 class="card-title"><%= t('.related_user') %></h5>
+    </div>
+    <div class="card-body">
+      <%= render 'users/user', user: @tweet.user %>
+    </div>
+  </div>
+<% end %>

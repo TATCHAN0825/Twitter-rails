@@ -25,6 +25,7 @@ ja:
       tweet: ツイートする
     show:
       title: ツイート閲覧
+      related_user: 関連ユーザー
     tweets:
       delete: 削除
     created: ツイートを作成しました
@@ -54,3 +55,4 @@ ja:
   timeline:
     home:
       title: ホームタイムライン
+      recommended_user: おすすめユーザー

@@ -5,6 +5,7 @@ class TimelineController < ApplicationController
     following_ids = current_user.followings.map { |following| following.id }
     following_ids.push(current_user.id) # 自分のツイートも表示する
     @tweets = Tweet.where(user_id: following_ids).order(created_at: 'DESC')
+    @recommended_users = User.where.not(id: following_ids)
   end
 
   private

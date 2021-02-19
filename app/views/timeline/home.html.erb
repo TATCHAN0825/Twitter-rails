@@ -1,3 +1,16 @@
 <p><%= t('.title') %> - <%= user_link(current_user) %></p>
 
 <%= render 'tweets/tweets', tweets: @tweets %>
+
+<% content_for(:right_content) do %>
+  <div class="card">
+    <div class="card-header">
+      <h5 class="card-title"><%= t('.recommended_user') %></h5>
+    </div>
+    <div class="card-body">
+      <% @recommended_users.each do |user| %>
+        <%= render 'users/user', user: user %>
+      <% end %>
+    </div>
+  </div>
+<% end %>
