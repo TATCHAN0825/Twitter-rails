@@ -1,24 +1,28 @@
-<table>
-  <thead>
-    <tr>
-      <th><%= Tweet.human_attribute_name(:id) %></th>
-      <th><%= Tweet.human_attribute_name(:created_at) %></th>
-      <th><%= Tweet.human_attribute_name(:text) %></th>
-      <th><%= User.model_name.human %></th>
-      <th><%= t('.delete') %></th>
-    </tr>
-  </thead>
-  <tbody>
-    <% tweets.each do |tweet| %>
-      <tr>
-        <td><%= link_to tweet.id, tweet_url(tweet) %></td>
-        <td><%= tweet.created_at %></td>
-        <td><%= tweet.text %></td>
-        <td><%= user_link(tweet.user) %></td>
-        <% if current_user == tweet.user %>
-          <td><%= link_to t('.delete'), tweet_url(tweet), method: :delete %></td>
+<% tweets.each do |tweet| %>
+  <div class="py-2">
+    <div class="card">
+      <div class="card-header">
+        <%= link_to user_path(tweet.user) do %>
+          <%= image_tag user_image_path(tweet.user), size: '45x45', class: %w[rounded-circle] %>
+          <%= tweet.user.name %>
+          <span class="text-muted"><%= screen_name_with_at(tweet.user.screen_name) %></span>
         <% end %>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+      </div>
+      <div class="card-body">
+        <%= tweet.text %>
+      </div>
+      <div class="card-footer">
+        <%= link_to tweet_url(tweet) do %>
+          <%= tweet.created_at %>
+        <% end %>
+        <% if current_user == tweet.user %>
+          <span class="float-right">
+            <%= link_to tweet_url(tweet), method: :delete, title: t('.delete') do %>
+              <i class="fas fa-trash"></i>
+            <% end %>
+          </span>
+        <% end %>
+      </div>
+    </div>
+  </div>
+<% end %>
