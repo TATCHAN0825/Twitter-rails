@@ -121,13 +121,13 @@
           <div class="container">
             <!-- flash表示 -->
             <% if notice %>
-              <div class="container p-3">
-                <div class="alert alert-info" role="alert"><%= notice %></div>
+              <div class="container">
+                <div class="alert alert-info my-3" role="alert"><%= notice %></div>
               </div>
             <% end %>
             <% if alert %>
-              <div class="container <%= 'p-3' unless notice %>">
-                <div class="alert alert-danger" role="alert"><%= alert %></div>
+              <div class="container">
+                <div class="alert alert-danger my-3" role="alert"><%= alert %></div>
               </div>
             <% end %>
             <%= yield %>
