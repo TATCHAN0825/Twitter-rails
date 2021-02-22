@@ -17,7 +17,7 @@ class TweetsController < ApplicationController
   def create
     @tweet = current_user.tweets.new(tweet_params)
     if @tweet.save
-      redirect_to :home, notice: t('.created')
+      redirect_to tweet_path(@tweet), notice: t('.created')
     else
       render :new
     end
