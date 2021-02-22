@@ -6,17 +6,17 @@ class FollowsController < ApplicationController
 
   def create
     if current_user.follow(@user)
-      redirect_to user_path(@user), notice: t('.created')
+      redirect_back fallback_location: root_path, notice: t('.created')
     else
-      redirect_to user_path(@user), alert: t('.failed_create')
+      redirect_back fallback_location: root_path, alert: t('.failed_create')
     end
   end
 
   def destroy
     if current_user.unfollow(@user)
-      redirect_to user_path(@user), notice: t('.destroyed')
+      redirect_back fallback_location: root_path, notice: t('.destroyed')
     else
-      redirect_to user_path(@user), alert: t('.failed_destroy')
+      redirect_back fallback_location: root_path, alert: t('.failed_destroy')
     end
   end
 

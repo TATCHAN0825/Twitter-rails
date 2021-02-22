@@ -10,13 +10,13 @@ class UsersController < ApplicationController
 
   def following
     if @user.followings.size < 1
-      redirect_to user_path(@user), alert: t('.no_following')
+      redirect_back fallback_location: root_path, alert: t('.no_following')
     end
   end
 
   def followers
     if @user.followers.size < 1
-      redirect_to user_path(@user), alert: t('.no_follower')
+      redirect_back fallback_location: root_path, alert: t('.no_follower')
     end
   end
 
