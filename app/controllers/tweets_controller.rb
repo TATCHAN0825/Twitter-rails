@@ -36,7 +36,7 @@ class TweetsController < ApplicationController
 
   def check_permission
     unless current_user == @tweet.user
-      redirect_to :home, alert: t('.no_permission')
+      redirect_back fallback_location: root_path, alert: t('.no_permission')
     end
   end
 
