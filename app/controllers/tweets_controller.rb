@@ -1,13 +1,12 @@
 class TweetsController < ApplicationController
   before_action :authenticate_user!, only: %i[new create destroy]
-  before_action :set_tweet, only: %i[show destroy]
-  before_action :check_permission, only: %i[destroy]
 
   def index
     @tweets = Tweet.order(created_at: 'DESC')
   end
 
   def show
+    @tweet = Tweet.find(params[:id])
   end
 
   def new
@@ -24,21 +23,12 @@ class TweetsController < ApplicationController
   end
 
   def destroy
+    @tweet = current_user.tweets.find(params[:id])
     @tweet.destroy
     redirect_to :home, notice: t('.destroyed')
   end
 
   private
-
-  def set_tweet
-    @tweet = Tweet.find(params[:id])
-  end
-
-  def check_permission
-    unless current_user == @tweet.user
-      redirect_back fallback_location: root_path, alert: t('.no_permission')
-    end
-  end
 
   def tweet_params
     params.require(:tweet).permit(:text)
