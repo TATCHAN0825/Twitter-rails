@@ -6,7 +6,7 @@ class CreateFollows < ActiveRecord::Migration[6.1]
 
       t.timestamps
 
-      t.index %i[user_id, target_id], unique: true # 重複フォローを防止する
+      t.index %i[user_id target_id], unique: true # 重複フォローを防止する
     end
   end
 end
