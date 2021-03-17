@@ -1,5 +1,6 @@
 class Tweet < ApplicationRecord
   belongs_to :user
+  has_many :notfication, dependent: :destroy
 
   validate :check_tweet_length
   validates :text, presence: true

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_18_224222) do
+ActiveRecord::Schema.define(version: 2021_03_17_143052) do
 
   create_table "follows", force: :cascade do |t|
     t.integer "user_id", null: false
@@ -20,6 +20,26 @@ ActiveRecord::Schema.define(version: 2021_02_18_224222) do
     t.index ["target_id"], name: "index_follows_on_target_id"
     t.index ["user_id", "target_id"], name: "index_follows_on_user_id_and_target_id", unique: true
     t.index ["user_id"], name: "index_follows_on_user_id"
+  end
+
+  create_table "notfications", force: :cascade do |t|
+    t.integer "visitor_id", null: false
+    t.integer "visited_id", null: false
+    t.integer "post_id"
+    t.integer "comment_id"
+    t.string "action", default: "", null: false
+    t.boolean "checked", default: false, null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "notifications", force: :cascade do |t|
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index "\"comment_id\"", name: "index_notifications_on_comment_id"
+    t.index "\"post_id\"", name: "index_notifications_on_post_id"
+    t.index "\"visited_id\"", name: "index_notifications_on_visited_id"
+    t.index "\"visitor_id\"", name: "index_notifications_on_visitor_id"
   end
 
   create_table "tweets", force: :cascade do |t|
