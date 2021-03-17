@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   resources 'tweets'
   resources 'follows', only: %i[create destroy]
   get 'home' => 'timeline#home'
-  scope ':screen_name' do
+  scope ':screen_name', as: 'user' do
     get '' => 'users#show'
     get 'following' => 'users#following'
     get 'followers' => 'users#followers'

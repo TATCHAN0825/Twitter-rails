@@ -19,14 +19,14 @@
       <td><%= user.tweets.size %></td>
       <td>
         <% if (followings_size = user.followings.size) > 0 %>
-          <%= link_to followings_size, following_path(user.screen_name) %>
+          <%= link_to followings_size, user_following_path(user.screen_name) %>
         <% else %>
           <%= followings_size %>
         <% end %>
       </td>
       <td>
         <% if (followers_size = user.followers.size) > 0 %>
-          <%= link_to followers_size, followers_path(user.screen_name) %>
+          <%= link_to followers_size, user_followers_path(user.screen_name) %>
         <% else %>
           <%= followers_size %>
         <% end %>

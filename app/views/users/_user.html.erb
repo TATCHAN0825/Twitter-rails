@@ -1,6 +1,6 @@
 <div class="card">
   <div class="card-body">
-    <%= link_to user_path(user) do %>
+    <%= link_to user_path(user.screen_name) do %>
       <%= image_tag user_image_path(user), size: '45x45', class: %w[rounded-circle] %>
       <%= user.name %>
       <span class="text-muted"><%= screen_name_with_at(user.screen_name) %></span>
@@ -9,9 +9,9 @@
   <% unless current_user === user %>
     <div class="card-footer">
       <% if current_user.following?(user) %>
-        <%= link_to t('.unfollow'), follow_path(id: user.id), method: :delete, class: 'btn btn-danger' %>
+        <%= link_to t('.unfollow'), user_follow_path(id: user.id), method: :delete, class: 'btn btn-danger' %>
       <% else %>
-        <%= link_to t('.follow'), follows_path(id: user.id), method: :post, class: 'btn btn-info' %>
+        <%= link_to t('.follow'), user_follows_path(id: user.id), method: :post, class: 'btn btn-info' %>
       <% end %>
     </div>
   <% end %>
