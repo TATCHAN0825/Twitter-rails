@@ -134,6 +134,7 @@ GEM
     nokogiri (1.11.1-x86-mingw32)
       racc (~> 1.4)
     orm_adapter (0.5.0)
+    pg (0.18.4-x86-mingw32)
     public_suffix (4.0.6)
     puma (5.2.1)
       nio4r (~> 2.0)
@@ -250,6 +251,7 @@ DEPENDENCIES
   jbuilder (~> 2.7)
   letter_opener_web
   mini_magick
+  pg (~> 0.18.4)
   puma (~> 5.0)
   rails (~> 6.1.1)
   rails-i18n
