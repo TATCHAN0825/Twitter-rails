@@ -1,4 +1,4 @@
-class Notfication < ApplicationRecord
+class Notification < ApplicationRecord
 
   default_scope -> { order(created_at: :desc) }
   belongs_to :tweet, optional: true

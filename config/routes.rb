@@ -6,11 +6,10 @@ Rails.application.routes.draw do
   end
 
   devise_for :users
-  get 'tuuti' => 'notification#notification'
+  get 'tuuti' => 'notifications#index'
   resources 'tweets'
   resources 'follows', only: %i[create destroy]
   get 'home' => 'timeline#home'
-  get 'tuuti' => 'notifications#index'
   scope ':screen_name' do
     get '' => 'users#show'
     get 'following' => 'users#following'
