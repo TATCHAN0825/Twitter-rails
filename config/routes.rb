@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   end
 
   devise_for :users
-
+  get 'tuuti' => 'notification#notification'
   resources 'tweets'
   resources 'follows', only: %i[create destroy]
   get 'home' => 'timeline#home'
