@@ -2,7 +2,7 @@
   <div class="py-2">
     <div class="card">
       <div class="card-header">
-        <%= link_to user_path(tweet.user) do %>
+        <%= link_to user_path(tweet.user.screen_name) do %>
           <%= image_tag user_image_path(tweet.user), size: '45x45', class: %w[rounded-circle] %>
           <%= tweet.user.name %>
           <span class="text-muted"><%= screen_name_with_at(tweet.user.screen_name) %></span>
