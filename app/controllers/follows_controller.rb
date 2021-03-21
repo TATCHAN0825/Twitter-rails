@@ -7,7 +7,7 @@ class FollowsController < ApplicationController
   def create
     if current_user.follow(@user)
       redirect_back fallback_location: root_path, notice: t('.created')
-      @user.create_notification_follow!(@user)
+      current_user.create_notification_follow!(@user)
     else
       redirect_back fallback_location: root_path, alert: t('.failed_create')
     end

@@ -32,6 +32,11 @@
                     <i class="fab fa-twitter fa-fw"></i><span class="d-none d-xl-inline"><%= t('application.new_tweet') %></span>
                   </a>
                 </li>
+                <li class="nav-item">
+                  <a href="<%= notifications_path%>" class="nav-link <%= 'active' if controller.controller_name == 'notifications'  %>">
+                    <i class="far fa-bell fa-fw" ></i><span class="d-none d-xl-inline"><%= t('application.notifications') %></span>
+                  </a>
+                </li>
               <% else %>
                 <li class="nav-item">
                   <a href="<%= new_user_registration_path %>" class="nav-link <%= 'active' if controller.controller_name == 'registrations' %>">
@@ -92,6 +97,11 @@
               <li class="nav-item">
                 <%= link_to new_tweet_path, class: 'nav-link' do %>
                   <i class="fab fa-twitter fa-fw" title="<%= t('application.new_tweet') %>"></i>
+                <% end %>
+              </li>
+              <li class="nav-item">
+                <%= link_to notifications_path, class: 'nav-link' do %>
+                  <i class="far fa-bell fa-fw" title="<%= t('application.notifications') %>"></i>
                 <% end %>
               </li>
               <li class="nav-item">
