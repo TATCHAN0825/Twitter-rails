@@ -27,20 +27,19 @@
           <%= tweet.created_at %>
         <% end %>
         <span class="float-right">
+          <% if (tweet.retweets.map { |retweet| retweet.user }).include?(current_user) %>
+            <i class="fas fa-retweet text-muted"></i>
+          <% else %>
+            <%= link_to retweet_tweet_path(tweet), title: t('.retweet') do %>
+              <i class="fas fa-retweet"></i>
+            <% end %>
+          <% end %>
           <% if current_user == tweet.user %>
             <%= link_to tweet_url(tweet), method: :delete, title: t('.delete') do %>
               <i class="fas fa-trash"></i>
             <% end %>
-          <% else %>
-            <% if (tweet.retweets.map { |retweet| retweet.user }).include?(current_user) %>
-              <i class="fas fa-retweet text-muted"></i>
-            <% else %>
-              <%= link_to retweet_tweet_path(tweet), title: t('.retweet') do %>
-                <i class="fas fa-retweet"></i>
-              <% end %>
-            <% end %>
           <% end %>
-          </span>
+        </span>
       </div>
     </div>
   </div>

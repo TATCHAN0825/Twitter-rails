@@ -30,7 +30,7 @@ class TweetsController < ApplicationController
 
   def retweet
     target_tweet = Tweet.find(params[:id])
-    if target_tweet.user === current_user or (target_tweet.retweets.map { |retweet| retweet.user }).include?(current_user)
+    if (target_tweet.retweets.map { |retweet| retweet.user }).include?(current_user)
       redirect_back fallback_location: root_path, alert: t('.failed_retweet')
       return
     end
