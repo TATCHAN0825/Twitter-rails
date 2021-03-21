@@ -1,6 +1,17 @@
 <% tweets.each do |tweet| %>
+  <% if tweet.retweet_tweet %>
+    <% retweeted_tweet = tweet %>
+    <% tweet = tweet.retweet_tweet %>
+  <% else %>
+    <% retweeted_tweet = nil %>
+  <% end %>
   <div class="py-2">
     <div class="card">
+      <% if retweeted_tweet %>
+        <div class="card-header">
+          <%= t('.user_retweet_html', user: user_link(retweeted_tweet.user)) %>
+        </div>
+      <% end %>
       <div class="card-header">
         <%= link_to user_path(tweet.user.screen_name) do %>
           <%= image_tag user_image_path(tweet.user), size: '45x45', class: %w[rounded-circle] %>
@@ -12,16 +23,24 @@
         <%= tweet.text %>
       </div>
       <div class="card-footer">
-        <%= link_to tweet_url(tweet) do %>
+        <%= link_to tweet_url(retweeted_tweet ? retweeted_tweet : tweet) do %>
           <%= tweet.created_at %>
         <% end %>
-        <% if current_user == tweet.user %>
-          <span class="float-right">
+        <span class="float-right">
+          <% if current_user == tweet.user %>
             <%= link_to tweet_url(tweet), method: :delete, title: t('.delete') do %>
               <i class="fas fa-trash"></i>
             <% end %>
+          <% else %>
+            <% if (tweet.retweets.map { |retweet| retweet.user }).include?(current_user) %>
+              <i class="fas fa-retweet text-muted"></i>
+            <% else %>
+              <%= link_to retweet_tweet_path(tweet), title: t('.retweet') do %>
+                <i class="fas fa-retweet"></i>
+              <% end %>
+            <% end %>
+          <% end %>
           </span>
-        <% end %>
       </div>
     </div>
   </div>
