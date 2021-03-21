@@ -18,6 +18,7 @@ ja:
     home: ホーム
     new_tweet: 新規ツイート
     notifications: 通知
+    profile: プロフィール
   tweets:
     index:
       title: ツイート一覧
