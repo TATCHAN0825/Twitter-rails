@@ -17,6 +17,7 @@ ja:
     register: 登録
     home: ホーム
     new_tweet: 新規ツイート
+    notifications: 通知
   tweets:
     index:
       title: ツイート一覧

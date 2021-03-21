@@ -1,11 +1,12 @@
 Rails.application.routes.draw do
+  get 'notifications/index'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   if Rails.env.development?
     mount LetterOpenerWeb::Engine, at: '/mail'
   end
 
   devise_for :users
-
+  get 'notifications' => 'notifications#index'
   resources 'tweets'
   resources 'follows', only: %i[create destroy]
   get 'home' => 'timeline#home'
