@@ -29,9 +29,13 @@ ja:
       related_user: 関連ユーザー
     tweets:
       delete: 削除
+      retweet: リツイート
+      user_retweet_html: "%{user}さんがリツイート"
     created: ツイートを作成しました
     destroyed: ツイートを削除しました
     no_permission: 権限がありません
+    retweeted: リツイートしました
+    failed_retweet: リツイートに失敗しました
   users:
     show:
       edit_user: ユーザ編集

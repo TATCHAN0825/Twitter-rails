@@ -7,7 +7,11 @@ Rails.application.routes.draw do
 
   devise_for :users
   get 'notifications' => 'notifications#index'
-  resources 'tweets'
+  resources 'tweets' do
+    member do
+      get 'retweet' => 'tweets#retweet'
+    end
+  end
   resources 'follows', only: %i[create destroy]
   get 'home' => 'timeline#home'
   scope ':screen_name', as: 'user' do
