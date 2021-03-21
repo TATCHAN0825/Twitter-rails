@@ -2,7 +2,7 @@ class UsersController < ApplicationController
 
   include ApplicationHelper
 
-  before_action :set_user
+  before_action :set_user, except: %i[index]
 
   def show
     @tweets = @user.tweets.order(created_at: 'DESC')
@@ -18,6 +18,10 @@ class UsersController < ApplicationController
     if @user.followers.size < 1
       redirect_back fallback_location: root_path, alert: t('.no_follower')
     end
+  end
+
+  def index
+    @users = User.order(created_at: 'ASC')
   end
 
   private

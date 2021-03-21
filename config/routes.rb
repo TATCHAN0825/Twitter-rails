@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   end
   resources 'follows', only: %i[create destroy]
   get 'home' => 'timeline#home'
+  get 'users' => 'users#index'
   scope ':screen_name', as: 'user' do
     get '' => 'users#show'
     get 'following' => 'users#following'

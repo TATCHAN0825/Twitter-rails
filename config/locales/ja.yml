@@ -54,6 +54,8 @@ ja:
     user:
       follow: フォロー
       unfollow: フォロー解除
+    index:
+      title: ユーザ一覧
     no_following: フォローがいません
     no_follower: フォロワーがいません
   follows:
