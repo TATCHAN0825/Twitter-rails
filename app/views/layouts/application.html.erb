@@ -126,6 +126,17 @@
                   </div>
                 </div>
               </li>
+            <% else %>
+              <li class="nav-item">
+                <a href="<%= new_user_registration_path %>" class="nav-link <%= 'active' if controller.controller_name == 'registrations' %>">
+                  <i class="fas fa-user-plus fa-fw" title="<%= t('application.register') %>"></i>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="<%= new_user_session_path %>" class="nav-link <%= 'active' if controller.controller_name == 'sessions' %>">
+                  <i class="fas fa-sign-in-alt fa-fw" title="<%= t('application.login') %>"></i>
+                </a>
+              </li>
             <% end %>
             <% if Rails.env.development? %>
               <li class="nav-item">
