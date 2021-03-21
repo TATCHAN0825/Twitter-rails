@@ -1,0 +1,8 @@
+<% notifications = @notifications.where(visited_id: current_user.id, checked: false ) %>
+<% if notifications.exists? %>
+  <% notifications.each do |notification|%>
+    <p><%=user_link(User.find(notification.visitor_id)) %>さんがフォローしてくれました</p>
+  <% end %>
+    <% else %>
+  <p>通知はありません</p>
+<% end %>
