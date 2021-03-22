@@ -5,7 +5,7 @@ class UsersController < ApplicationController
   before_action :set_user, except: %i[index]
 
   def show
-    @tweets = @user.tweets.order(created_at: 'DESC')
+    @tweets = @user.tweets.where(parent_tweet: nil).order(created_at: 'DESC')
   end
 
   def following
