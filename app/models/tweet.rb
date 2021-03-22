@@ -4,7 +4,7 @@ class Tweet < ApplicationRecord
   belongs_to :retweet_tweet, class_name: 'Tweet', foreign_key: 'retweet_tweet_id', optional: true
   has_many :retweets, class_name: 'Tweet', :foreign_key => 'retweet_tweet_id'
   has_many :likes
-  has_many :users, through: :likes
+  has_many :liked_users, through: :likes
 
   validate :check_tweet_length
   validates :text, presence: true
