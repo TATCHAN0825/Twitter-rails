@@ -8,7 +8,9 @@
       <h5 class="card-title"><%= t('.related_user') %></h5>
     </div>
     <div class="card-body">
-      <%= render 'users/user', user: @tweet.user %>
+      <% @related_users.each do |related_user| %>
+        <%= render 'users/user', user: related_user %>
+      <% end %>
     </div>
   </div>
 <% end %>

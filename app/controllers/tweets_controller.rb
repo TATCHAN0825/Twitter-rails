@@ -8,6 +8,7 @@ class TweetsController < ApplicationController
   def show
     @tweet = Tweet.find(params[:id])
     @replies = @tweet.child_tweets
+    @related_users = (([@tweet] + @replies).map { |tweet| tweet.user }).uniq
   end
 
   def new
