@@ -28,7 +28,7 @@
         <% end %>
         <span class="float-right">
           <% if (tweet.retweets.map { |retweet| retweet.user }).include?(current_user) %>
-            <i class="fas fa-retweet fa-fw text-muted"></i>
+            <i class="fas fa-retweet fa-fw" style="color: #17bf63"></i>
           <% else %>
             <%= link_to retweet_tweet_path(tweet), title: t('.retweet') do %>
               <i class="fas fa-retweet fa-fw"></i>
