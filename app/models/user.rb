@@ -11,7 +11,7 @@ class User < ApplicationRecord
   has_many :reverse_of_follows, class_name: 'Follow', foreign_key: :target_id
   has_many :followers, through: :reverse_of_follows, source: :user
   has_many :likes
-  has_many :tweets, through: :likes
+  has_many :like_tweets, through: :likes
 
   validates :screen_name, format: { with: /\A[a-zA-Z_\d]+\z/ }, length: { in: 4..15 }, presence: true, uniqueness: true
   validates :name, length: { maximum: 50 }, presence: true
