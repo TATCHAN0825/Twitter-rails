@@ -1,11 +1,24 @@
+<% if @parent_tweet %>
+  <p><%= t('.reply_to_tweet') %></p>
+  <%= render 'tweets', tweets: [@parent_tweet] %>
+<% end %>
+
 <%= bootstrap_form_with(model: @tweet, local: true) do |form| %>
   <%= render 'shared/error_messages', model: @tweet %>
+
+  <% if @parent_tweet %>
+    <%= form.hidden_field :parent_tweet_id, value: @parent_tweet.id %>
+  <% end %>
 
   <div class="field">
     <%= form.text_area :text %>
   </div>
 
   <div class="actions">
-    <%= form.submit t('.tweet') %>
+    <% if @parent_tweet %>
+      <%= form.submit t('.reply') %>
+    <% else %>
+      <%= form.submit t('.tweet') %>
+    <% end %>
   </div>
 <% end %>

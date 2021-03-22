@@ -1,6 +1,6 @@
 <p><%= t('.title') %> - ID: <%= @tweet.id %></p>
 
-<%= render 'tweets', tweets: [@tweet] %>
+<%= render 'tweets', tweets: [@tweet] + @replies %>
 
 <% content_for(:right_content) do %>
   <div class="card">

@@ -12,6 +12,11 @@
           <%= t('.user_retweet_html', user: user_link(retweeted_tweet.user)) %>
         </div>
       <% end %>
+      <% if tweet.parent_tweet %>
+        <div class="card-header">
+          <p><%= t('.reply_to_html', user: link_to(screen_name_with_at(tweet.user.screen_name), user_path(tweet.user))) %></p>
+        </div>
+      <% end %>
       <div class="card-header">
         <%= link_to user_path(tweet.user.screen_name) do %>
           <%= image_tag user_image_path(tweet.user), size: '45x45', class: %w[rounded-circle] %>
@@ -39,6 +44,9 @@
           <%= tweet.created_at %>
         <% end %>
         <span class="float-right">
+          <%= link_to new_tweet_path(parent_tweet_id: tweet.id), title: t('.reply') do %>
+            <i class="fas fa-comment fa-fw" style="color: #5b7083"></i>
+          <% end %>
           <% if (tweet.retweets.map { |retweet| retweet.user }).include?(current_user) %>
             <i class="fas fa-retweet fa-fw" style="color: #17bf63"></i>
           <% else %>
