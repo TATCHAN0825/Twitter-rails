@@ -1,15 +1,58 @@
-<% if current_user %>
-  <% if current_user == @user %>
-    <%= link_to t('.edit_user'), edit_user_registration_path %>
-  <% else %>
-    <% if current_user.following?(@user) %>
-      <%= link_to t('.unfollow'), follow_path(id: @user.id), method: :delete %>
-    <% else %>
-      <%= link_to t('.follow'), follows_path(id: @user.id), method: :post %>
-    <% end %>
-  <% end %>
-<% end %>
-
-<%= render 'profile', user: @user %>
+<div class="container my-3">
+  <div class="row">
+    <div class="col">
+      <%= image_tag user_image_path(@user), size: '120x120', class: %w[rounded-circle img-thumbnail] %>
+      <div class="float-right">
+        <br><br><%# TODO %>
+        <% if current_user %>
+          <% if current_user == @user %>
+            <%= link_to t('.edit_user'), edit_user_registration_path, class: %w[btn btn-info] %>
+          <% else %>
+            <% if current_user.following?(@user) %>
+              <%= link_to t('.unfollow'), follow_path(id: @user.id), method: :delete, class: %w[btn btn-danger] %>
+            <% else %>
+              <%= link_to t('.follow'), follows_path(id: @user.id), method: :post, class: %w[btn btn-primary] %>
+            <% end %>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <span class="h3"><%= @user.name %></span><br>
+      <span class="text-muted"><%= screen_name_with_at(@user.screen_name) %></span>
+    </div>
+  </div>
+  <div class="row my-2">
+    <div class="col">
+      <p><%= @user.profile.blank? ? t('.no_profile') : @user.profile %></p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <% if (followings_size = @user.followings.size) > 0 %>
+        <%= link_to user_following_path(@user.screen_name) do %>
+          <%= t('.follow_count') %>
+          <%= followings_size %>
+        <% end %>
+      <% else %>
+        <%= t('.follow_count') %>
+        <%= followings_size %>
+      <% end %>
+      <% if (followers_size = @user.followers.size) > 0 %>
+        <%= link_to user_followers_path(@user.screen_name) do %>
+          <%= t('.follower_count') %>
+          <%= followers_size %>
+        <% end %>
+      <% else %>
+        <%= t('.follower_count') %>
+        <%= followers_size %>
+      <% end %>
+      <%= t('.tweet_count') %>
+      <%= @user.tweets.size %>
+    </div>
+  </div>
+</div>
 
 <%= render 'tweets/tweets', tweets: @tweets %>
