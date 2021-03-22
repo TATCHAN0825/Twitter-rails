@@ -13,7 +13,7 @@ class User < ApplicationRecord
   has_many :likes
   has_many :like_tweets, through: :likes
 
-  validates :screen_name, format: { with: /\A[a-zA-Z_\d]+\z/ }, length: { in: 4..15 }, presence: true, uniqueness: true
+  validates :screen_name, format: { with: /\A[a-zA-Z_\d]+\z/ }, length: { in: 4..15 }, presence: true, uniqueness: { case_sensitive: false }
   validates :name, length: { maximum: 50 }, presence: true
   mount_uploader :image, ImageUploader
 
