@@ -18,6 +18,18 @@
           <%= tweet.user.name %>
           <span class="text-muted"><%= screen_name_with_at(tweet.user.screen_name) %></span>
         <% end %>
+        <div class="float-right">
+          <% if current_user == tweet.user %>
+            <div class="dropdown dropup">
+              <span data-toggle="dropdown"><i class="fas fa-ellipsis-h"></i></span>
+              <div class="dropdown-menu dropdown-menu-right">
+                <%= link_to tweet_url(tweet), method: :delete, class: 'dropdown-item' do %>
+                  <i class="fas fa-trash fa-fw"></i><%= t('.delete') %>
+                <% end %>
+              </div>
+            </div>
+          <% end %>
+        </div>
       </div>
       <div class="card-body">
         <%= tweet.text %>
@@ -31,7 +43,7 @@
             <i class="fas fa-retweet fa-fw" style="color: #17bf63"></i>
           <% else %>
             <%= link_to retweet_tweet_path(tweet), title: t('.retweet') do %>
-              <i class="fas fa-retweet fa-fw"></i>
+              <i class="fas fa-retweet fa-fw" style="color: #5b7083"></i>
             <% end %>
           <% end %>
           <% if (tweet.likes.map { |like| like.user }).include?(current_user) %>
@@ -40,12 +52,7 @@
             <% end %>
           <% else %>
             <%= link_to likes_url(id: tweet.id), method: :post, title: t('.like') do %>
-                <i class="fas fa-heart fa-fw"></i>
-            <% end %>
-          <% end %>
-          <% if current_user == tweet.user %>
-            <%= link_to tweet_url(tweet), method: :delete, title: t('.delete') do %>
-              <i class="fas fa-trash fa-fw"></i>
+                <i class="fas fa-heart fa-fw" style="color: #5b7083"></i>
             <% end %>
           <% end %>
         </span>
