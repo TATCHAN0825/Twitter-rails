@@ -7,16 +7,23 @@ class TweetsController < ApplicationController
 
   def show
     @tweet = Tweet.find(params[:id])
+    @replies = @tweet.child_tweets
+    @related_users = (([@tweet] + @replies).map { |tweet| tweet.user }).uniq
   end
 
   def new
     @tweet = current_user.tweets.new
+    @parent_tweet = Tweet.find_by(id: params[:parent_tweet_id])
   end
 
   def create
     @tweet = current_user.tweets.new(tweet_params)
     if @tweet.save
-      redirect_to tweet_path(@tweet), notice: t('.created')
+      if @tweet.parent_tweet
+        redirect_to tweet_path(@tweet.parent_tweet), notice: t('.created_reply')
+      else
+        redirect_to tweet_path(@tweet), notice: t('.created')
+      end
     else
       render :new
     end
@@ -41,6 +48,6 @@ class TweetsController < ApplicationController
   private
 
   def tweet_params
-    params.require(:tweet).permit(:text)
+    params.require(:tweet).permit(:text, :parent_tweet_id)
   end
 end

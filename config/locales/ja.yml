@@ -25,6 +25,8 @@ ja:
       new: 新しいツイート
     new:
       tweet: ツイートする
+      reply_to_tweet: 返信先ツイート
+      reply: 返信する
     show:
       title: ツイート閲覧
       related_user: 関連ユーザー
@@ -34,11 +36,14 @@ ja:
       user_retweet_html: "%{user}さんがリツイート"
       like: いいね
       unlike: いいねを取り消し
+      reply_to_html: "返信先: %{user}"
+      reply: 返信
     created: ツイートを作成しました
     destroyed: ツイートを削除しました
     no_permission: 権限がありません
     retweeted: リツイートしました
     failed_retweet: リツイートに失敗しました
+    created_reply: 返信しました
   users:
     show:
       edit_user: ユーザ編集
