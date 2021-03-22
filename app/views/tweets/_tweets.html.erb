@@ -40,8 +40,14 @@
         <%= tweet.text %>
       </div>
       <div class="card-footer">
-        <%= link_to tweet_url(retweeted_tweet ? retweeted_tweet : tweet) do %>
-          <%= tweet.created_at %>
+        <% if tweet.parent_tweet %>
+          <%= link_to tweet_url(tweet.parent_tweet) do %>
+            <%= tweet.created_at %>
+          <% end %>
+        <% else %>
+          <%= link_to tweet_url(tweet) do %>
+            <%= tweet.created_at %>
+          <% end %>
         <% end %>
         <span class="float-right">
           <%= link_to new_tweet_path(parent_tweet_id: tweet.id), title: t('.reply') do %>
