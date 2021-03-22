@@ -14,7 +14,7 @@
       <% end %>
       <% if tweet.parent_tweet %>
         <div class="card-header">
-          <p><%= t('.reply_to_html', user: link_to(screen_name_with_at(tweet.user.screen_name), user_path(tweet.user))) %></p>
+          <p><%= t('.reply_to_html', user: link_to(screen_name_with_at(tweet.parent_tweet.user.screen_name), user_path(tweet.parent_tweet.user))) %></p>
         </div>
       <% end %>
       <div class="card-header">
