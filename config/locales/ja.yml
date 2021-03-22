@@ -49,15 +49,14 @@ ja:
       edit_user: ユーザ編集
       follow: フォロー
       unfollow: フォロー解除
-    following:
-      title: フォローリスト
-    followers:
-      title: フォロワーリスト
-    profile:
       tweet_count: ツイート数
       follow_count: フォロー数
       follower_count: フォロワー数
       no_profile: 自己紹介は設定されていません
+    following:
+      title: フォローリスト
+    followers:
+      title: フォロワーリスト
     user:
       follow: フォロー
       unfollow: フォロー解除
