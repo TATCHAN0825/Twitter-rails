@@ -19,7 +19,7 @@ class TweetsController < ApplicationController
     @tweet = current_user.tweets.new(tweet_params)
     if @tweet.save
       if @tweet.parent_tweet
-        redirect_to tweet_path(@tweet.parent_tweet), notice: t('.created')
+        redirect_to tweet_path(@tweet.parent_tweet), notice: t('.created_reply')
       else
         redirect_to tweet_path(@tweet), notice: t('.created')
       end

@@ -43,6 +43,7 @@ ja:
     no_permission: 権限がありません
     retweeted: リツイートしました
     failed_retweet: リツイートに失敗しました
+    created_reply: 返信しました
   users:
     show:
       edit_user: ユーザ編集
