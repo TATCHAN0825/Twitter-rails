@@ -34,6 +34,15 @@
               <i class="fas fa-retweet"></i>
             <% end %>
           <% end %>
+          <% if (tweet.likes.map { |like| like.user }).include?(current_user) %>
+            <%= link_to like_url(tweet), method: :delete, title: t('.unlike') do %>
+                <i class="fas fa-heart" style="color: #e0245e"></i>
+            <% end %>
+          <% else %>
+            <%= link_to likes_url(id: tweet.id), method: :post, title: t('.like') do %>
+                <i class="fas fa-heart"></i>
+            <% end %>
+          <% end %>
           <% if current_user == tweet.user %>
             <%= link_to tweet_url(tweet), method: :delete, title: t('.delete') do %>
               <i class="fas fa-trash"></i>
