@@ -32,6 +32,8 @@ ja:
       delete: 削除
       retweet: リツイート
       user_retweet_html: "%{user}さんがリツイート"
+      like: いいね
+      unlike: いいねを取り消し
     created: ツイートを作成しました
     destroyed: ツイートを削除しました
     no_permission: 権限がありません
@@ -67,3 +69,8 @@ ja:
     home:
       title: ホームタイムライン
       recommended_user: おすすめユーザー
+  likes:
+    created: いいねしました
+    failed_create: いいねに失敗しました
+    destroyed: いいねを取り消しました
+    failed_destroy: いいねの取り消しに失敗しました
