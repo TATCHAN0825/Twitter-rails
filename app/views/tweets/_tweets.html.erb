@@ -28,24 +28,24 @@
         <% end %>
         <span class="float-right">
           <% if (tweet.retweets.map { |retweet| retweet.user }).include?(current_user) %>
-            <i class="fas fa-retweet text-muted"></i>
+            <i class="fas fa-retweet fa-fw text-muted"></i>
           <% else %>
             <%= link_to retweet_tweet_path(tweet), title: t('.retweet') do %>
-              <i class="fas fa-retweet"></i>
+              <i class="fas fa-retweet fa-fw"></i>
             <% end %>
           <% end %>
           <% if (tweet.likes.map { |like| like.user }).include?(current_user) %>
             <%= link_to like_url(tweet), method: :delete, title: t('.unlike') do %>
-                <i class="fas fa-heart" style="color: #e0245e"></i>
+                <i class="fas fa-heart fa-fw" style="color: #e0245e"></i>
             <% end %>
           <% else %>
             <%= link_to likes_url(id: tweet.id), method: :post, title: t('.like') do %>
-                <i class="fas fa-heart"></i>
+                <i class="fas fa-heart fa-fw"></i>
             <% end %>
           <% end %>
           <% if current_user == tweet.user %>
             <%= link_to tweet_url(tweet), method: :delete, title: t('.delete') do %>
-              <i class="fas fa-trash"></i>
+              <i class="fas fa-trash fa-fw"></i>
             <% end %>
           <% end %>
         </span>
