@@ -37,7 +37,7 @@
         </div>
       </div>
       <div class="card-body">
-        <%= tweet.text %>
+        <%= raw replace_screen_name_to_link(tweet.text) %>
       </div>
       <div class="card-footer">
         <% if tweet.parent_tweet %>
